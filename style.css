@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: #ac9898e8;
+    text-align: center;
+}
+
+#visualiser {
+    cursor: pointer;
+    position: relative;
+    color: #878787;
+}
+
+.datum {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#text {
+    font-size: 30px;
+    color: #090909;
+    font-family: "Inter", sans-serif;
+    font-style: bold;
+    font-weight: 800;
+}
