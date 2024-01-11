@@ -31,6 +31,8 @@ function clearScene() {
 }
 
 function setupAudio() {
+  if (analyser) return;
+
   const context = new AudioContext();
   const src = context.createMediaElementSource(audio);
   analyser = context.createAnalyser();
@@ -83,6 +85,9 @@ function startVis() {
   });
 
   function render() {
+    let lowerMaxFr = 0;
+    let upperAvgFr = 0;
+
     if (analyser) {
       analyser.getByteFrequencyData(dataArray);
 
@@ -92,28 +97,19 @@ function startVis() {
         dataArray.length - 1
       );
 
-      const lowerMax = max(lowerHalf);
-      const upperAvg = avg(upperHalf);
-
-      const lowerMaxFr = lowerMax / lowerHalf.length;
-      const upperAvgFr = upperAvg / upperHalf.length;
-
-      cube.rotation.x += 0.001;
-      cube.rotation.y += 0.003;
-      cube.rotation.z += 0.005;
-
-      warpCube(
-        cube,
-        modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8),
-        modulate(upperAvgFr, 0, 1, 0, 4)
-      );
-    } else {
-      cube.rotation.x += 0.001;
-      cube.rotation.y += 0.003;
-      cube.rotation.z += 0.005;
-
-      warpCube(cube, 0, 0);
+      lowerMaxFr = max(lowerHalf) / lowerHalf.length;
+      upperAvgFr = avg(upperHalf) / upperHalf.length;
     }
+
+    cube.rotation.x += 0.001;
+    cube.rotation.y += 0.003;
+    cube.rotation.z += 0.005;
+
+    warpCube(
+      cube,
+      modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8),
+      modulate(upperAvgFr, 0, 1, 0, 4)
+    );
 
     requestAnimationFrame(render);
     renderer.render(scene, camera);
