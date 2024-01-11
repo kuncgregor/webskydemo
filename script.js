@@ -3,7 +3,7 @@
 const audioInput = document.getElementById("audio");
 let noise = new SimplexNoise();
 const area = document.getElementById("visualiser");
-const label = document.getElementById("label");
+
 
 let audio = new Audio("vrabec.mp3");
 
@@ -21,10 +21,10 @@ area.addEventListener("click", () => {
   console.log(audio);
   if (audio.paused) {
     audio.play();
-    label.style.display = "none";
+
   } else {
     audio.pause();
-    label.style.display = "flex";
+
   }
 });
 
