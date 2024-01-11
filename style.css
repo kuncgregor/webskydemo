@@ -6,14 +6,19 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    background-color: #ac9898e8;
     text-align: center;
+    background-color: black;
 }
 
 #visualiser {
     cursor: pointer;
     position: relative;
-    color: #878787;
+    background-image: url("slika.JPEG"); /* Replace 'your-image-path.jpg' with the path or URL of your background image */
+    background-position: center; /* Centers the background image */
+    text-align: center;
+    background-size: 50% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .datum {
@@ -25,8 +30,18 @@ body {
 
 #text {
     font-size: 30px;
-    color: #090909;
+    color: #ffffff;
     font-family: "Inter", sans-serif;
     font-style: bold;
     font-weight: 800;
+}
+
+.opis {
+    margin-bottom: 30px;
+    width: 50%;
+}
+
+#textopis {
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
 }

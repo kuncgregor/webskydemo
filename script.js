@@ -54,9 +54,12 @@ function startVis() {
   camera.position.z = 100;
   scene.add(camera);
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  const renderer = new THREE.WebGLRenderer( { alpha: true } ); // init like this
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor("#ced0ce");
+  //renderer.setClearColor("#ced0ce");
+  
+  renderer.setClearColor( 0xffffff, 0 ); // second param is opacity, 0 => transparent
+  
 
   area.appendChild(renderer.domElement);
   const geometry = new THREE.BoxGeometry(
@@ -68,12 +71,12 @@ function startVis() {
     depthSegments
   );
   const material = new THREE.MeshLambertMaterial({
-    color: "#696969",
+    color: "#FFFFFF",
     wireframe: true,
   });
   const cube = new THREE.Mesh(geometry, material);
 
-  const light = new THREE.DirectionalLight("#ffffff", 1);
+  const light = new THREE.DirectionalLight("#ffffff", 1000);
   light.position.set(0, 50, 100);
   scene.add(light);
   scene.add(cube);
