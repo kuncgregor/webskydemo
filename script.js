@@ -65,11 +65,10 @@ function startVis(width, height, depth) {
     camera.position.z = 100;
     scene.add(camera);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true }); // init like this
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    //renderer.setClearColor("#ced0ce");
 
-    renderer.setClearColor(0xffffff, 0); // second param is opacity, 0 => transparent
+    renderer.setClearColor(0xffffff, 0);
 
     area.appendChild(renderer.domElement);
     const geometry = new THREE.BoxGeometry(width, height, depth, 20, 20, 20);
