@@ -11,9 +11,9 @@ function isMobile() {
 let width, height, depth;
 function updatevalues() {
     if (isMobile()) {
-        width = 10;
-        height = 10;
-        depth = 10;
+        width = 16;
+        height = 16;
+        depth = 16;
     } else {
         width = 20;
         height = 20;
@@ -62,7 +62,13 @@ function startVis(width, height, depth) {
         0.1,
         1000
     );
-    camera.position.z = 100;
+    if (isMobile()) {
+        camera.position.z = 100;
+        camera.position.y = 11;
+    } else {
+        camera.position.z = 100;
+    }
+
     scene.add(camera);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
